@@ -13,6 +13,7 @@ const dbURI = `mongodb+srv://Niraj80:${password}@cluster0.mzowurg.mongodb.net/`;
 
 export const connectDB =async()=>{
     try{
+      mongoose.set('strictQuery', true);
       mongoose.connect(dbURI, {
         // Options can be added here if needed
         tls: true,
