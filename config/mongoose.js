@@ -1,19 +1,25 @@
 
+
 import mongoose from 'mongoose';
 
-const url = 'mongodb://localhost:27017/ecommerce_api';
+const password = 'Niraj8999';
 
-export const connectDB = async () => {
-  try {
-    // Connect to MongoDB using mongoose.connect()
-    await mongoose.connect(url, {
-      useNewUrlParser: true, // Use new URL parser
-      useUnifiedTopology: true, // Use new Server Discovery and Monitoring engine
-     
-    });
+// Create the MongoDB connection URL with the encoded password
 
-    console.log('MongoDB connected successfully!');
-  } catch (err) {
-    console.error('MongoDB connection error:', err);
-  }
-};
+const dbURI = `mongodb+srv://Niraj80:${password}@cluster0.mzowurg.mongodb.net/`;
+// Connect to the MongoDB server with the provided URL and options (none specified in this case)
+
+
+
+export const connectDB =async()=>{
+    try{
+      mongoose.connect(dbURI, {
+        // Options can be added here if needed
+        tls: true,
+        tlsAllowInvalidCertificates: true,
+      });
+      console.log("Mongodb connected successfully!!!")
+    }catch(err){
+       console.log(err);
+    }
+}
